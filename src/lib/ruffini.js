@@ -1,0 +1,3 @@
+export const ruffiniCells = {ruffiniRoot:-2,ruffiniC3:2,ruffiniC2:7,ruffiniC1:7,ruffiniC0:2,ruffiniP2:-4,ruffiniP1:-6,ruffiniP0:-2,ruffiniQ2:2,ruffiniQ1:3,ruffiniQ0:1,ruffiniR:0};
+export const ruffiniComplete = algebra => Object.entries(ruffiniCells).every(([key,expected])=>{const value=String(algebra[key]??'').trim();return value!==''&&Number(value.replace(',','.').replace('−','-'))===expected;});
+export const ruffiniSummary = algebra => `Raíz: ${algebra.ruffiniRoot||'—'}; coeficientes: ${['ruffiniC3','ruffiniC2','ruffiniC1','ruffiniC0'].map(k=>algebra[k]||'—').join(', ')}; productos: ${['ruffiniP2','ruffiniP1','ruffiniP0'].map(k=>algebra[k]||'—').join(', ')}; sumas: ${['ruffiniQ2','ruffiniQ1','ruffiniQ0','ruffiniR'].map(k=>algebra[k]||'—').join(', ')}`;
