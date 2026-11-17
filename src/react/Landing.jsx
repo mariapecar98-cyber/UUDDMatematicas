@@ -1,14 +1,14 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function Landing({start}) {
   return <main className="landing landing-new unit-catalog">
     <header className="landing-bar">
-      <div className="brand"><img className="brand-logo" src={`${import.meta.env.BASE_URL}logo-mates-en-practicas.svg`} alt="Mates en Prácticas"/></div>
+      <div className="brand"><img className="brand-logo" src={`${import.meta.env.BASE_URL}logo-mates-transparente.png`} alt="Mates para la vida"/></div>
     </header>
     <section className="landing-title catalog-intro" aria-labelledby="catalog-title">
       <div className="landing-heading">
         <span className="grade-label">4.º ESO · MATEMÁTICAS A</span>
-        <h1 id="catalog-title">Mates en<br/>Prácticas</h1>
+        <h1 id="catalog-title">Mates para<br/>la vida</h1>
       </div>
       <div className="catalog-art" aria-hidden="true"><span className="catalog-art-main">m²</span></div>
     </section>

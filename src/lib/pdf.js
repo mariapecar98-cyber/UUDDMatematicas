@@ -2,7 +2,7 @@ const MARKER = '%MATES-PROGRESO-V1:';
 
 let logoPromise;
 function loadLogo() {
-  if (!logoPromise) logoPromise = fetch(`${import.meta.env.BASE_URL}logo-mates-en-practicas.png`).then(response => {
+  if (!logoPromise) logoPromise = fetch(`${import.meta.env.BASE_URL}logo-mates-transparente.png`).then(response => {
     if (!response.ok) throw new Error('No se pudo cargar el logo');
     return response.arrayBuffer();
   }).then(buffer => new Uint8Array(buffer)).catch(error => { logoPromise = undefined; throw error; });
@@ -15,14 +15,14 @@ export async function createStyledPdf(title, lines) {
   let y;
   const page = () => {
     pdf.setFillColor('#f7f4ec'); pdf.rect(0, 0, 210, 297, 'F');
-    pdf.addImage(logo, 'PNG', 13, 7, 60, 24, 'brand-logo');
+    pdf.addImage(logo, 'PNG', 13, 5, 47, 31.33, 'brand-logo');
     pdf.setTextColor('#22201f'); pdf.setFont('helvetica', 'bold');
     pdf.setDrawColor('#dcd8cd'); pdf.line(16, 36, 194, 36);
     pdf.setTextColor('#593be0'); pdf.setFontSize(10);
     pdf.text('UNIDAD 01 / EL POLINOMIO DE LA VIDA', 16, 46);
     pdf.setTextColor('#22201f'); pdf.setFontSize(22); pdf.text(title, 16, 58);
     pdf.setFontSize(8); pdf.setFont('helvetica', 'normal');
-    pdf.text(`Mates en Prácticas · ${pdf.getNumberOfPages()}`, 16, 286);
+    pdf.text(`Mates para la vida · ${pdf.getNumberOfPages()}`, 16, 286);
     y = 72;
   };
   page();
@@ -63,7 +63,7 @@ export async function progressPdfBlob(data, missions) {
 
 export async function saveProgressPdf(data, missions) {
   const url = URL.createObjectURL(await progressPdfBlob(data, missions));
-  const link = document.createElement('a'); link.href = url; link.download = 'mates-en-practicas-progreso.pdf'; link.click();
+  const link = document.createElement('a'); link.href = url; link.download = 'mates-progreso.pdf'; link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
