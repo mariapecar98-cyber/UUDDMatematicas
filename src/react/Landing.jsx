@@ -18,10 +18,10 @@ export default function Landing({start}) {
         <button className="unit-card unit-available" onClick={start}>
           <div className="unit-card-top"><span>UNIDAD 01 · POLINOMIOS</span><span className="unit-status">Disponible</span></div>
           <div className="age-art" aria-hidden="true"><div className="age-number">25</div><div className="euro-stamp">€</div><div className="math-stamp">x + 1</div><div className="art-square"/></div>
-          <div className="unit-card-copy"><h3>Polinomios</h3><p>Proyecto de la unidad y repaso del contenido.</p><span className="unit-enter">Entrar en la unidad <b>→</b></span></div>
+          <div className="unit-card-copy"><h3>Polinomios</h3><p>Autoevaluaciones disponibles. Proyecto de la unidad bloqueado.</p><span className="unit-enter">Entrar en la unidad <b>→</b></span></div>
         </button>
-        <article className="unit-card unit-upcoming"><div className="unit-card-copy"><h3>Próximamente</h3></div></article>
-        <article className="unit-card unit-upcoming unit-upcoming-blue"><div className="unit-card-copy"><h3>Próximamente</h3></div></article>
+        <article className="unit-card unit-upcoming unit-locked" aria-label="Unidad 2: Ecuaciones. Bloqueada"><div className="unit-card-top"><span>UNIDAD 02</span><span className="unit-status">Bloqueado</span></div><div className="unit-placeholder" aria-hidden="true">x = ?</div><div className="unit-card-copy"><h3>Ecuaciones</h3><span className="unit-lock-label">Bloqueado</span></div></article>
+        <article className="unit-card unit-upcoming unit-upcoming-blue unit-locked" aria-label="Unidad 3: Sistemas de ecuaciones e inecuaciones. Bloqueada"><div className="unit-card-top"><span>UNIDAD 03</span><span className="unit-status">Bloqueado</span></div><div className="unit-placeholder" aria-hidden="true">≤ ≥</div><div className="unit-card-copy"><h3>Sistemas de ecuaciones e inecuaciones</h3><span className="unit-lock-label">Bloqueado</span></div></article>
       </div>
     </section>
   </main>;

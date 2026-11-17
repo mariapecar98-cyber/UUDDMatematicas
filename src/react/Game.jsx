@@ -1,4 +1,5 @@
 import UnitMenu from './UnitMenu.jsx';
+import SelfAssessment from './SelfAssessment.jsx';
 import ResetDialog from './ResetDialog.jsx';
 import { createStyledPdf, saveProgressPdf, readProgressPdf } from '../lib/pdf.js';
 import { calculateBudget, budgetReady } from '../lib/budget.js';
@@ -21,7 +22,7 @@ function load(){try{const v=JSON.parse(localStorage.getItem(KEY));return v?.vers
 
 export default function Game(){
   const [data,setData]=useState(initial),[screen,setScreen]=useState('catalog'),[book,setBook]=useState(false),[notice,setNotice]=useState(''),[incidentOpen,setIncidentOpen]=useState(false);
-  const started=screen==='project';
+  const started=false; // El proyecto está bloqueado durante la publicación de las autoevaluaciones.
   const [resetOpen,setResetOpen]=useState(false);
   const resetGame=()=>{setData(structuredClone(initial));setBook(false);setIncidentOpen(false);incidentSeen.current=false;setResetOpen(false);setNotice('Partida reiniciada');setTimeout(()=>setNotice(''),3000);};
   useEffect(()=>{setData(load())},[]);
@@ -44,7 +45,8 @@ export default function Game(){
   const checkDivision=(field,dividend,divisor)=>{setNotice(String(data.algebra[`${field}Remainder`]||'').trim()!==''&&divisionEquivalent(dividend,divisor,data.algebra[`${field}Quotient`],data.algebra[`${field}Remainder`])?'Correcto':'Revisa cociente y resto');setTimeout(()=>setNotice(''),2200)};
   const hint=()=>{const tips=['Separa los gastos mensuales de los pagos iniciales.','Expresa el gasto mensual acumulado para x meses.','Multiplica los gastos mensuales por x y añade la fianza pagada al principio.'];const i=data.hints.length;edit(['hints'],[...data.hints,i]);setNotice(tips[Math.min(i,2)]);setTimeout(()=>setNotice(''),4000)};
   const hasSaved=Boolean(data.completed.length||data.active||data.team.some(p=>p.alias||p.job||p.salary)||data.home.city||data.home.rent);
-  if(!started)return <>{screen==='unit'?<UnitMenu back={()=>setScreen('catalog')} project={()=>setScreen('project')} hasSaved={hasSaved}/>:<Landing start={()=>setScreen('unit')}/>}{notice&&<div className="toast" role="status">{notice}</div>}</>;
+  if(screen==='assessment')return <SelfAssessment back={()=>setScreen('unit')}/>;
+  if(!started)return <>{screen==='unit'?<UnitMenu back={()=>setScreen('catalog')} assessment={()=>setScreen('assessment')}/>:<Landing start={()=>setScreen('unit')}/>}{notice&&<div className="toast" role="status">{notice}</div>}</>;
 
   return <div className="game-shell"><header className="gamebar"><button className="brand" onClick={()=>setScreen('catalog')}><img className="brand-logo" src={`${import.meta.env.BASE_URL}logo-mates-transparente.png`} alt="Mates para la vida"/></button><div className="chapter-title"><span>CAPÍTULO 1</span><b>El polinomio de la vida</b></div><div className="game-actions"><button className="icon-button" onClick={()=>setScreen('unit')}>Volver a Polinomios</button><button className="icon-button" onClick={()=>setBook(true)} title="Cuaderno">▤ <span>Cuaderno</span></button><button className="icon-button" onClick={exportSave}>↓ <span>Descargar progreso</span></button><label className="icon-button import-button">↑ <span>Cargar progreso</span><input type="file" accept="application/pdf,.pdf" onChange={importSave}/></label><button className="icon-button" onClick={()=>setResetOpen(true)}>Reiniciar partida</button></div></header>
     <div className="game-map" aria-label="Misiones del capítulo">{missions.map((x,i)=><button key={x.title} disabled={i>data.active&&!data.completed.includes(i-1)} className={`map-tile map-${i+1} ${data.active===i?'current':''} ${data.completed.includes(i)?'finished':''}`} onClick={()=>edit(['active'],i)}><span>{data.completed.includes(i)?'✓':`0${i+1}`}</span><b>{x.title}</b><i>{x.icon}</i></button>)}</div>
