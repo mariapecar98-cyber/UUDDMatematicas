@@ -1,4 +1,4 @@
-# Mates para la vida
+# Mates en Prácticas
 
 Aplicación educativa para Matemáticas A de 4.º ESO. La primera unidad, **El polinomio de la vida**, propone que un equipo diseñe un presupuesto de independencia y lo modele con polinomios.
 

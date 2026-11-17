@@ -3,7 +3,7 @@ import React from 'react';
 export default function UnitMenu({ back, assessment }) {
   return <main className="landing landing-new unit-catalog">
     <header className="landing-bar">
-      <button className="brand" onClick={back} aria-label="Volver a unidades didácticas"><img className="brand-logo" src={`${import.meta.env.BASE_URL}logo-mates-transparente.png`} alt="Mates para la vida"/></button>
+      <button className="brand" onClick={back} aria-label="Volver a unidades didácticas"><img className="brand-logo" src={`${import.meta.env.BASE_URL}logo-mates-en-practicas.svg`} alt="Mates en Prácticas"/></button>
       <button className="button button-dark" onClick={back}>← Unidades didácticas</button>
     </header>
     <section className="landing-title catalog-intro" aria-labelledby="unit-title">
