@@ -18,7 +18,7 @@ npm run dev
 3. En **Actions**, ejecuta **Publicar en GitHub Pages** (o sube un nuevo cambio a `main`).
 4. Cuando termine, el enlace público aparecerá en **Settings → Pages** y en el despliegue.
 
-La dirección habitual es `https://USUARIO.github.io/REPOSITORIO/`. La configuración obtiene automáticamente el usuario y el nombre del repositorio durante la compilación en GitHub Actions. Los siguientes cambios que subas a `main` se publicarán automáticamente.
+En **Settings → Pages → Custom domain**, el dominio configurado debe ser `entremates.es`. Astro genera las rutas de los recursos desde la raíz (`/`) de ese dominio. Los siguientes cambios que subas a `main` se publicarán automáticamente.
 
 No subas `node_modules`, `dist` ni archivos `.env`: están excluidos mediante `.gitignore`.
 
