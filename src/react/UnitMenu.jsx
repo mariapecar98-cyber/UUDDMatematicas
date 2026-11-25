@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function UnitMenu({ back, assessment }) {
+export default function UnitMenu({ back, assessment, project }) {
   return <main className="landing landing-new unit-catalog">
     <header className="landing-bar">
       <button className="brand" onClick={back} aria-label="Volver a unidades didácticas"><img className="brand-logo" src={`${import.meta.env.BASE_URL}logo-mates-transparente.png`} alt="Mates para la vida"/></button>
@@ -17,11 +17,11 @@ export default function UnitMenu({ back, assessment }) {
           <div className="review-art" aria-hidden="true">x² + 2x + 1</div>
           <div className="unit-card-copy"><h2>Autoevaluación</h2><p>Comprueba lo que sabes.</p><span className="unit-enter">Entrar en las autoevaluaciones <b>→</b></span></div>
         </button>
-        <article className="unit-card unit-locked" aria-label="Proyecto de la unidad bloqueado">
-          <div className="unit-card-top"><span>PROYECTO DE LA UNIDAD</span><span className="unit-status">Bloqueado</span></div>
+        <button className="unit-card unit-available" onClick={project}>
+          <div className="unit-card-top"><span>PROYECTO DE LA UNIDAD</span><span className="unit-status">Disponible</span></div>
           <div className="age-art" aria-hidden="true"><div className="age-number">25</div><div className="euro-stamp">€</div><div className="math-stamp">x + 1</div><div className="art-square"/></div>
-          <div className="unit-card-copy"><h2>Proyecto de la unidad</h2><h3>El polinomio de la vida</h3><p>Tenéis 25 años y os vais a vivir juntos. Diseñad vuestro presupuesto y modelizadlo con polinomios.</p><span className="unit-lock-label">Bloqueado</span></div>
-        </article>
+          <div className="unit-card-copy"><h2>Proyecto de la unidad</h2><h3>El polinomio de la vida</h3><p>Tenéis 25 años y os vais a vivir juntos. Diseñad vuestro presupuesto y modelizadlo con polinomios.</p><span className="unit-enter">Entrar en el proyecto <b>→</b></span></div>
+        </button>
       </div>
     </section>
   </main>;
